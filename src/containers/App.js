@@ -36,7 +36,7 @@ class App extends Component {
 			<h1>Loading</h1> :
 		(
 			<div className='tc'>
-				<h1 className='fl w-75'>drillBench</h1>
+				<h1 className='fl w-75'>drillBenchx</h1>
 				<Selector/>
 				{/*<SearchBox searchChange={this.onSearchChange}/>*/}
 				<Scroll>
