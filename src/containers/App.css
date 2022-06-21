@@ -1,0 +1,22 @@
+@font-face {
+	font-family: 'LEMON MILK Regular';
+	font-style: normal;
+	font-weight:  normal;
+	src:  local('LEMON MILK Regular'), url('LEMONMILK-Regular.otf') ;
+}
+
+
+
+h1 {
+	font-family: 'LEMON MILK Regular';
+	font-weight: 200;
+	color: #0ccac4;
+}
+
+
+#topRight {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  /*font-size: 18px;*/
+}
