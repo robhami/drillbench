@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import CardList from '../components/CardList';
-import SearchBox from '../components/SearchBox';
+// import SearchBox from '../components/SearchBox';
 import {widgets} from '../components/widgets';
 import './App.css';
 import Scroll from '../components/Scroll.js';
 import Selector from '../components/Selector.js';
+import Select from '../components/Select.js'
 
 class App extends Component {
 

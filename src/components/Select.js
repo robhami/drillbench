@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react';
 import Select from 'react-select'
-import { colourOptions } from './data.ts';
 
-export default () => (
-  <Select
-    defaultValue={[colourOptions[2], colourOptions[3]]}
-    isMulti
-    name="colors"
-    options={colourOptions}
-    className="basic-multi-select"
-    classNamePrefix="select"
-  />
-);
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
+const MyComponent = () => (
+  <Select options={options} />
+)
+
+export default Select;
