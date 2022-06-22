@@ -5,7 +5,8 @@ import {widgets} from '../components/widgets';
 import './App.css';
 import Scroll from '../components/Scroll.js';
 import Selector from '../components/Selector.js';
-import Select from '../components/Select.js'
+import MyComponent from '../components/MyComponent.js'
+
 
 class App extends Component {
 
@@ -23,9 +24,11 @@ class App extends Component {
 	// 	.then (users=> this.setState({widgets: users}));
 	// }
 
+	
 	onSearchChange = (event) =>{
-		this.setState({searchfield: event.target.value})		
-	}
+			// this.setState({searchfield: event.target.value})
+			console.log(event)		
+		}
 
 	render(){
 		const {widgets, searchfield} = this.state
@@ -37,18 +40,22 @@ class App extends Component {
 			<h1>Loading</h1> :
 		(
 			<div className='tc'>
-				<h1 className='fl w-75'>drillBenchx</h1>
+				<h1 className='fl w-50'>drillBenchx</h1>
+				
+				<MyComponent xonChange={this.onSearchChange}/>
 				<Selector/>
 				{/*<SearchBox searchChange={this.onSearchChange}/>*/}
 				<Scroll>
 					<CardList widgets={filteredWidgets}/>
 				</Scroll>
 
+
 			</div>
 		)
 
 				
 	}
+	
 }
 
 export default App;
