@@ -25,9 +25,13 @@ class App extends Component {
 	// }
 
 	
-	onSearchChange = (event) =>{
+	onSearchChange = (event, i) =>{
 			// this.setState({searchfield: event.target.value})
-			console.log(event)		
+			console.log(event.length)
+
+			for(i=0; i<event.length; i++)	{
+				console.log(event[i].value);
+			}	
 		}
 
 	render(){
