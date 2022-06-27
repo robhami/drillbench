@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import CardList from '../components/CardList';
-// import SearchBox from '../components/SearchBox';
 import {widgets} from '../components/widgets';
 import './App.css';
 import Scroll from '../components/Scroll.js';
-import Selector from '../components/Selector.js';
-import MyComponent from '../components/MyComponent.js'
+import SearchDrop from '../components/SearchDrop.js'
+import Navbar from '../components/Navbar.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+let appArray="";
 
 class App extends Component {
 
@@ -18,37 +19,45 @@ class App extends Component {
 		}
 	}
 
-	// componentDidMount(){
-	// 	fetch('https://jsonplaceholder.typicode.com/users')
-	// 	.then (response=> response.json())
-	// 	.then (users=> this.setState({widgets: users}));
-	// }
+	handleNameChange = (searchfield) => {
+		
+		this.setState({searchfield})
+		console.log(searchfield)
+	}
 
 	
 	onSearchChange = (event, i) =>{
 			// this.setState({searchfield: event.target.value})
 			console.log(event.length)
-
+			
 			for(i=0; i<event.length; i++)	{
-				console.log(event[i].value);
+				
+				appArray.concat(event[i].label);
+				
+				this.setState({searchfield: event[i].label})
+				
 			}	
 		}
 
 	render(){
+		console.log(appArray);
 		const {widgets, searchfield} = this.state
 		const filteredWidgets = widgets.filter(widget=>{
-			return widget.name.toLowerCase().includes(searchfield.toLowerCase())
+			return (
+				widget.name.toLowerCase().includes(searchfield.toLowerCase())
+			)
+			
 		})
-
+		console.log(filteredWidgets)
 		return !widgets.length ?
 			<h1>Loading</h1> :
 		(
-			<div className='tc'>
-				<h1 className='fl w-50'>drillBenchx</h1>
-				
-				<MyComponent xonChange={this.onSearchChange}/>
-				<Selector/>
-				{/*<SearchBox searchChange={this.onSearchChange}/>*/}
+			
+
+			<div>
+				<Navbar onChange={this.handleNameChange}/>
+					
+				<SearchDrop  xonChange={this.onSearchChange}/>
 				<Scroll>
 					<CardList widgets={filteredWidgets}/>
 				</Scroll>

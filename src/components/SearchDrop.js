@@ -7,7 +7,7 @@ const options = [
   { value: 'vanilla', label: 'Parameter entry' }
 ]
 
-const MyComponent = ({xonChange}) => {
+const SearchDrop = ({xonChange}) => {
  
     return (
       <div>
@@ -25,12 +25,12 @@ const MyComponent = ({xonChange}) => {
     )     
 }
 
-const onChange = (data) => {
-  console.log("Here is some data: ", data)
-  Select.value=data
-  console.log(Select)
-}
+// const onChange = (data) => {
+//   console.log("Here is some data: ", data)
+//   Select.value=data
+//   console.log(Select)
+// }
 
 
 
-export default MyComponent ; 
+export default SearchDrop ; 
