@@ -35,11 +35,11 @@ class Navbar extends Component {
 		  	<Nav.Item>
 			    <Nav.Link eventKey="disabled" disabled>Disabled</Nav.Link>
 		  	</Nav.Item>
-			<Nav.Item>
-			        <Form.Group className="mb-3" id="DD">
-			        	<SearchDrop xonChange={this.handleInputChange}/>
-			        </Form.Group>
-			</Nav.Item>
+			{/* <Nav.Item> */}
+			{/*         <Form.Group className="mb-3" id="DD"> */}
+			{/*         	<SearchDrop/> */}
+			{/*         </Form.Group> */}
+			{/* </Nav.Item> */}
 		</Nav>      
     	)  
 

@@ -1,36 +1,51 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Select from 'react-select'
 
-const options = [
-  { value: 'chocolate', label: 'Units Converter' },
-  { value: 'strawberry', label: 'BHA entry' },
-  { value: 'vanilla', label: 'Parameter entry' }
-]
+class SearchDrop extends Component {
+ render() {
+    const {widgets} = this.props
+    console.log(this.props)
+       return (
+            <div>
+              <Selectlist widgets={widgets}/>
+              <Selectlist2 widgets={widgets}/>
+           </div>      
+        )     
+  }    
+}
 
-const SearchDrop = ({xonChange}) => {
- 
+const Selectlist = (props) => {
+  const ddvalues=props.widgets.map((drop,i)=>{
     return (
-      <div>
-        <Select 
+      <option key={i}>{drop.name}</option>
+     ) 
+  }) 
+
+  return (
+
+    <select>{ddvalues}</select>
+    )
+}
+
+const Selectlist2 = (props) => {
+ 
+  const ddvalues2=props.widgets.map((x) => (
+       {       
+        value: x.name,
+        label: x.name,
+       } 
+
+    ));
+  console.log(ddvalues2)
+  return (
+    <Select 
         id="testSelect"
         isMulti
         data-value=""
-        options={options} 
-        onChange={xonChange}
-        
-
+        options={ddvalues2} 
+        // onChange={xonChange}
         />
-     </div> 
-      
-    )     
+    )
 }
-
-// const onChange = (data) => {
-//   console.log("Here is some data: ", data)
-//   Select.value=data
-//   console.log(Select)
-// }
-
-
 
 export default SearchDrop ; 

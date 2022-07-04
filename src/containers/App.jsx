@@ -19,26 +19,6 @@ class App extends Component {
 		}
 	}
 
-	handleNameChange = (searchfield) => {
-		
-		this.setState({searchfield})
-		console.log(searchfield)
-	}
-
-	
-	onSearchChange = (event, i) =>{
-			// this.setState({searchfield: event.target.value})
-			console.log(event.length)
-			
-			for(i=0; i<event.length; i++)	{
-				
-				appArray.concat(event[i].label);
-				
-				this.setState({searchfield: event[i].label})
-				
-			}	
-		}
-
 	render(){
 		console.log(appArray);
 		const {widgets, searchfield} = this.state
@@ -52,21 +32,19 @@ class App extends Component {
 		return !widgets.length ?
 			<h1>Loading</h1> :
 		(
-			
-
 			<div>
-				<Navbar onChange={this.handleNameChange}/>
+				<Navbar/>
 					
-				<SearchDrop  xonChange={this.onSearchChange}/>
+				<SearchDrop widgets={widgets}/>
+				
+				
 				<Scroll>
 					<CardList widgets={filteredWidgets}/>
 				</Scroll>
 
 
 			</div>
-		)
-
-				
+		)				
 	}
 	
 }
