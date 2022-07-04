@@ -11,16 +11,33 @@ let appArray="";
 
 class App extends Component {
 
-	constructor(){
-		super()
-		this.state ={
+
+		state ={
 			widgets: widgets,
 			searchfield: ''
 		}
-	}
+
+
+		onChange = (index) => {
+			console.log(index.length)
+//need to do loop through index values 
+
+
+  			const {widgets} = this.state
+
+  			this.setState({
+  				widgets : widgets.filter((widget, i) => {
+  					// console.log(i)
+  					// console.log(widgets)
+  					// console.log(widget)
+  					return i !== index
+  				}),
+
+			})
+		}
 
 	render(){
-		console.log(appArray);
+		
 		const {widgets, searchfield} = this.state
 		const filteredWidgets = widgets.filter(widget=>{
 			return (
@@ -28,21 +45,16 @@ class App extends Component {
 			)
 			
 		})
-		console.log(filteredWidgets)
+		// console.log(filteredWidgets)
 		return !widgets.length ?
 			<h1>Loading</h1> :
 		(
 			<div>
-				<Navbar/>
-					
-				<SearchDrop widgets={widgets}/>
-				
-				
+				<Navbar/>					
+				<SearchDrop widgets={widgets} onChange={this.onChange}/>				
 				<Scroll>
 					<CardList widgets={filteredWidgets}/>
 				</Scroll>
-
-
 			</div>
 		)				
 	}
