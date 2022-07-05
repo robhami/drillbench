@@ -4,8 +4,7 @@ import './index.css';
 import App from './containers/App.jsx';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
-
-
+// import './components/ucscript.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

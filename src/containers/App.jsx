@@ -6,9 +6,10 @@ import Scroll from '../components/Scroll.js';
 import SearchDrop from '../components/SearchDrop.js'
 import Navbar from '../components/Navbar.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import unitCon from '../components/unitCon.js'
+import UnitCon from '../components/UnitCon.js';
 
 import Draggable from 'react-draggable';
+
 
 class App extends Component {
 
@@ -16,6 +17,15 @@ class App extends Component {
 		widgets: widgets,
 		searchfield: []
 	}
+// 
+// 	componentDidMount() {
+// 	  const script = document.createElement("script");
+// 	  script.src = "statis/libs/ucscript.js";
+// 	  script.async = true;
+// 	  script.onload = () => this.scriptLoaded();
+// 
+// 	  document.body.appendChild(script);
+// 	}
 
 	onChange = (event) => {	
 		let x
@@ -41,8 +51,9 @@ class App extends Component {
 				<Navbar/>					
 				<SearchDrop widgets={widgets} onChange={this.onChange}/>				
 				<Scroll>				
-					<CardList widgets={filteredWidgets}/>				
+					<CardList widgets={filteredWidgets}/>			
 				</Scroll>
+				<UnitCon/>
 			</div>
 		)				
 	}	
