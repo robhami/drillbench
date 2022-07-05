@@ -8,12 +8,15 @@ const CardList = ({widgets}) => {
 		{
 			widgets.map((user,i)=> {
 				return (
-					<Card 
+					
+						<Card 
 						key={i} 
 						id={widgets[i].id} 
 						name={widgets[i].name} 
 						image={widgets[i].image}
-					/>
+						/>
+					
+					
 				);
 			})	
 		}
