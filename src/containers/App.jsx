@@ -14,38 +14,61 @@ class App extends Component {
 
 		state ={
 			widgets: widgets,
-			searchfield: ''
+			searchfield: []
 		}
 
 
-		onChange = (index) => {
-			console.log(index.length)
-//need to do loop through index values 
+		onChange2 = (index) => {
+			// console.log(index.length)
+			console.log("index: ", index)
+			const {widgets} = this.state
 
-
-  			const {widgets} = this.state
+			let selectId
+			let x
+			for(x=0;x<index.length;x++) {
+				console.log("id: ", index[x].id)
+				selectId =index[x].id
+			}
 
   			this.setState({
   				widgets : widgets.filter((widget, i) => {
-  					// console.log(i)
-  					// console.log(widgets)
-  					// console.log(widget)
-  					return i !== index
+  					console.log("i: ", i)
+  					console.log("widgets: ", widgets)
+  					console.log("widget: ", widget)
+  					return i == selectId		
   				}),
-
 			})
 		}
 
-	render(){
+		onChange = (event) => {
 		
+			let x
+			let searchArray=[]
+			for (x=0;x<event.length;x++){
+				console.log(event[x].value)
+				searchArray.push(event[x].value)
+			}
+
+			this.setState({searchfield: searchArray})	
+
+		}
+
+	render(){
+		console.log(this.state.searchfield)
 		const {widgets, searchfield} = this.state
+
 		const filteredWidgets = widgets.filter(widget=>{
+			// console.log(widgets)
+			console.log(widget)
+
 			return (
-				widget.name.toLowerCase().includes(searchfield.toLowerCase())
+				
+				this.state.searchfield.includes(widget.value)
 			)
 			
 		})
-		// console.log(filteredWidgets)
+		console.log(filteredWidgets)
+		
 		return !widgets.length ?
 			<h1>Loading</h1> :
 		(
