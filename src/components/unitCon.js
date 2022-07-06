@@ -4,55 +4,56 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import NavPill from '../components/NavPill.js'
 
 class UnitCon extends Component {
 	 
-	 stab = () => {
-	 	console.log("tab")
+	 tab = (event) => {
+	 	console.log(event.target)
 	 };
 
     render() {
 
         return (
-            <div className="container">
-				<div className="card">
+            <Container>
+				<Card style={{ width: '18rem' }}>
+					<Card className="text-center">
 
-					<div className="card text-center">
-
-						<div className="card-header">
+						 <Card.Header>
 							<h2>Units Converter</h2>
 								<dt> Select Units Type: </dt>
-							<ul className="nav nav-pills" id="unitsTab">
-								
-								<li className="nav-item" id="massNav" >
-									<button className="nav-link" id="mass" onClick={this.tab}>Mass</button>
-								</li>
-								<li className="nav-item">
-									<button className="nav-link" id="length" data-toggle="tab" onClick={this.tab}>Length</button>
-								</li>
-								<li className="nav-item">
-									<button className="nav-link" href="#" id="density" data-toggle="tab"onClick={this.tab}>Density</button>
-								</li>
-								<li className="nav-item">
-									<button className="nav-link" href="#" id="flow" data-toggle="tab" onClick={this.tab}>Flow</button>
-								</li>
-								<li className="nav-item">
-									<button className="nav-link" href="#" id="pressure" data-toggle="tab" onClick={this.tab}>Pressure</button>
-								</li>
+							<Nav variant="pills" id="unitsTab" defaultActiveKey="/home">		
+								<Nav.Item id="massNav">
+									<Nav.Link href="/home" id="mass" onClick={this.tab}>Mass</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link id="length" eventKey="link-1" onClick={this.tab}>Length</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link id="density" eventKey="link-2" onClick={this.tab}>Density</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link id="flow" eventKey="link-3" onClick={this.tab}>Flow</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link id="pressure" eventKey="link-4" onClick={this.tab}>Pressure</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link id="torque" eventKey="link-5" onClick={this.tab}>Torque</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link id="area" eventKey="link-6" onClick={this.tab}>Area</Nav.Link>
+								</Nav.Item>
+								<NavPill/>
+							</Nav>
+						</Card.Header>
+					</Card>
 
-								<li className="nav-item">
-									<button className="nav-link" href="#" id="torque" data-toggle="tab" onClick={this.tab}>Torque</button>
-								</li>
 
-								<li className="nav-item">
-									<button className="nav-link" href="#" id="area" data-toggle="tab" onClick={this.tab}>Area</button>
-								</li>
-
-							</ul>
-						</div>
-					</div>
-
-					<div className="card-body">
+					<Card.Body>
 						<dt> Select Units To Convert: </dt>
 						<InputGroup className="mb-3">
 							<DropdownButton
@@ -68,8 +69,8 @@ class UnitCon extends Component {
       								id="userOutput" 
       								disabled 
     							/>
-
     					</InputGroup>
+
     					<InputGroup className="mb-3">		
     						<DropdownButton
           						variant="outline-secondary"
@@ -89,22 +90,12 @@ class UnitCon extends Component {
     							/>
 							
 						</InputGroup>
-
-
-							<div className="input-group mb-3">
-								
-									<button className="btn btn-outline-success" type="button" id="button-addon2" onClick={this.formSubmit}>Convert</button>
-									
-							</div>
-				</div>
-			</div>
-		</div>
-
-
-
+							<Button variant="outline-success" id="button-addon2" onClick={this.formSubmit}>Convert</Button>{' '}			
+				</Card.Body>
+			</Card>
+		</Container>
 
         )
-
 
     }
 }

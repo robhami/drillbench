@@ -5,7 +5,6 @@ import './App.css';
 import Scroll from '../components/Scroll.js';
 import SearchDrop from '../components/SearchDrop.js'
 import Navbar from '../components/Navbar.jsx'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import UnitCon from '../components/UnitCon.js';
 
 import Draggable from 'react-draggable';

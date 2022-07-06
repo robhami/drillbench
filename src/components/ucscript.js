@@ -1,7 +1,7 @@
 <script>
 
 
-window.tab (tabSelect) {
+tab (tabSelect) {
 	tabConfig(tabSelect)
 }
 
