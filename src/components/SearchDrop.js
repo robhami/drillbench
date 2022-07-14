@@ -4,7 +4,7 @@ import Select from 'react-select'
 class SearchDrop extends Component {
  render() {
     const {widgets, onChange} = this.props
-    console.log(this.props)
+    // console.log(this.props)
        return (
             <div>
               <Selectlist2 widgets={widgets} onChange={onChange}/>
@@ -23,6 +23,7 @@ const Selectlist2 = (props) => {
        } 
 
     ));
+  // console.log(ddvalues2)
  
   return (
     <Select 
