@@ -5,15 +5,25 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 const UnitsDrop = (props) => {
 	
 	const units = props.units
+	const ddClick = props.ddClick
+	const title = props.title
+	const idPass = props.id
+	// console.log (props)
+
 	return (
 	
 	<>
 		<DropdownButton
 		variant="outline-secondary"
-	    title="Units From"
-	    id="unitsTo"
+	    title={title}
+	    id={idPass}
 		>	
-			<UnitsList units={units}/>
+			<UnitsList 
+			units={units}
+			ddClick={ddClick}
+
+			/>
+
 		</DropdownButton>
 	</>
 
@@ -21,8 +31,11 @@ const UnitsDrop = (props) => {
 }
 
 const UnitsList = (props) => {
-	
+		
 	const units = props.units
+	const ddClick = props.ddClick
+	// console.log (ddClick)
+
 	return (
 		<>
 			{
@@ -30,9 +43,11 @@ const UnitsList = (props) => {
 
 					return (
 						<Dropdown.Item
-						key={i}
+							// id={"dd"+i}
+							key={i}
+							onClick={ddClick}
 						>
-						{units[i]}
+							{units[i]}
 						</Dropdown.Item>
 					)
 				})

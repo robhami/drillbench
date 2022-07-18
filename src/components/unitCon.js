@@ -14,17 +14,18 @@ import UnitsDrop from '../components/UnitsDrop.js'
 class UnitCon extends Component {
 
 	state = {
-		units: []
+		units: [],
+		unitsFrom: '',
+		unitsTo: ''
 	}
  
-	pillClick = (event) => {
-	 	
+	pillClick = (event) => { 	
 	 	let unitSelect = event.target.id
 	 	this.createUnitsObject(unitSelect)
 	}
 
 	createUnitsObject = (unitSelect) => {
-	 	console.log(unitSelect)
+	 	// console.log(unitSelect)
 		 	switch (unitSelect) {
 
 		 	case "mass":
@@ -129,10 +130,22 @@ class UnitCon extends Component {
 			}
  	}
 
- 	createUnitsArray = (units) => {
- 		let unitsArray=Object.keys(units)
+ 	createUnitsArray = (unitsObject) => {
+ 		console.log(unitsObject)
+
+ 		let unitsArray=Object.keys(unitsObject)
+ 		console.log(unitsArray)
  		this.setState({units: unitsArray})
+ 		this.setState({unitsTo: unitsObject})
+ 		this.setState({unitsFrom: unitsObject})
  	}
+
+ 	ddClick = (event) => {	 	
+		let ddHeading=event.target.parentElement.parentElement.children[0]
+
+		ddHeading.textContent=event.target.textContent
+		console.log(ddHeading)
+	}
 
     render() {
     	const {units} = this.state;
@@ -154,11 +167,16 @@ class UnitCon extends Component {
 
 					<Card.Body>
 						<dt> Select Units To Convert: </dt>
-						<InputGroup className="mb-3">
+						<InputGroup className="mb-3" 
+						id="unitsFrom"
+						>
 							<UnitsDrop
-								units={units}			
-							/>
-
+								units={units}
+								ddClick={this.ddClick}	
+								id="unitsFrom"
+								title="Units From"
+							>
+							</UnitsDrop>
 							<Form.Control
   								aria-label="Example text with button addon"
   								aria-describedby="basic-addon1"
@@ -167,9 +185,12 @@ class UnitCon extends Component {
   								disabled 
 							/>
     					</InputGroup>
-						<InputGroup className="mb-3">
+						<InputGroup className="mb-3" id="unitsTo">
 							<UnitsDrop
 								units={units}	
+								ddClick={this.ddClick}
+								id="unitsTo"
+								title="Units To"
 							/>
 												
     							<Form.Control
