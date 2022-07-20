@@ -3,12 +3,15 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const UnitsDrop = (props) => {
-	
+
+// units list for unitsType that are in state are passed (e.g. Klbs, T etc)	
 	const units = props.units
 	const ddClick = props.ddClick
 	const title = props.title
 	const idPass = props.id
+	
 	// console.log (props)
+	console.log(title)
 
 	return (
 	
@@ -17,7 +20,8 @@ const UnitsDrop = (props) => {
 		variant="outline-secondary"
 	    title={title}
 	    id={idPass}
-		>	
+	    value={title}
+		>
 			<UnitsList 
 			units={units}
 			ddClick={ddClick}
@@ -38,7 +42,9 @@ const UnitsList = (props) => {
 
 	return (
 		<>
-			{
+
+
+			{ 
 				props.units.map((uom,i) => {
 
 					return (

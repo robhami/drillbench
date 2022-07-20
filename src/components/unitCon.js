@@ -16,10 +16,14 @@ class UnitCon extends Component {
 	state = {
 		units: [],
 		unitsFrom: '',
-		unitsTo: ''
+		unitsTo: '',
+		ddHeadUnitsFrom: 'Units From',
+		ddHeadUnitsTo: 'Units To'
 	}
  
-	pillClick = (event) => { 	
+	pillClick = (event) => { 
+		this.setState({ddHeadUnitsFrom: 'Units From'})	
+		this.setState({ddHeadUnitsTo: 'Units To'})
 	 	let unitSelect = event.target.id
 	 	this.createUnitsObject(unitSelect)
 	}
@@ -141,14 +145,33 @@ class UnitCon extends Component {
  	}
 
  	ddClick = (event) => {	 	
-		let ddHeading=event.target.parentElement.parentElement.children[0]
+		// let ddHeading=event.target.parentElement.parentElement.children[0]
+		// ddHeading.textContent=event.target.textContent
+		console.log("ddClick")
+		let ddFromTo=event.target.parentElement.parentElement.id
 
-		ddHeading.textContent=event.target.textContent
-		console.log(ddHeading)
+		if(ddFromTo=="unitsFrom"){
+			this.setState({ddHeadUnitsFrom: event.target.textContent})	
+			console.log("ddclick unitsFrom set state")	
+		}
+		
+		if(ddFromTo=="unitsTo"){
+			this.setState({ddHeadUnitsTo: event.target.textContent})
+			console.log("ddclick unitsTo set state")		
+		}
+
+
+		
+	}
+
+	clearDDHeading = () => {
+		
 	}
 
     render() {
+    	// get units from state and create variable
     	const {units} = this.state;
+    	
     	
         return (
             <Container>
@@ -158,7 +181,7 @@ class UnitCon extends Component {
 							<h2>Units Converter</h2>
 								<dt> Select Units Type: </dt>
 							<Nav variant="pills" id="unitsTab" defaultActiveKey="0">		
-							
+								{/* get unitsType from imported text array file, add pillClick function, these are passed as props to NavPill component*/}
 								<NavPill unitsType={unitsType} pillClick={this.pillClick}/>
 							</Nav>
 						</Card.Header>
@@ -171,10 +194,12 @@ class UnitCon extends Component {
 						id="unitsFrom"
 						>
 							<UnitsDrop
+							// get units from state and pass as props
 								units={units}
+							// add click function and pass as props
 								ddClick={this.ddClick}	
 								id="unitsFrom"
-								title="Units From"
+								title={this.state.ddHeadUnitsFrom}
 							>
 							</UnitsDrop>
 							<Form.Control
@@ -190,8 +215,9 @@ class UnitCon extends Component {
 								units={units}	
 								ddClick={this.ddClick}
 								id="unitsTo"
-								title="Units To"
-							/>
+								title={this.state.ddHeadUnitsTo}
+							>
+							</UnitsDrop>
 												
     							<Form.Control
       								aria-label="Example text with button addon"
