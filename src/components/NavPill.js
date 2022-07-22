@@ -7,7 +7,7 @@ const NavPill = (props) => {
 
 	return (
 		<>
-			<NavList unitsType={unitsType} pillClick={pillClick}/>
+			<NavList unitsType={unitsType} pillClick={pillClick} activeKey="2"/>
 		</>
 		)
 }
@@ -23,14 +23,18 @@ const NavList = (props) => {
 				{
 					props.unitsType.map((unit,i) => {
 
-						return (		
-								<Nav.Item key={i} >
+						return (
+
+								<Nav.Item key={i}  >
 									<Nav.Link 
+
 										id={unitsType[i].id}
 										name={unitsType[i].name}
 										value={unitsType[i].value}
 										eventKey={i}
 										onClick={pillClick}
+										
+
 										>
 										{unitsType[i].name}
 									</Nav.Link>

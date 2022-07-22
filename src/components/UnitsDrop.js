@@ -11,7 +11,7 @@ const UnitsDrop = (props) => {
 	const idPass = props.id
 	
 	// console.log (props)
-	console.log(title)
+	// console.log(title)
 
 	return (
 	

@@ -18,10 +18,13 @@ class UnitCon extends Component {
 		unitsFrom: '',
 		unitsTo: '',
 		ddHeadUnitsFrom: 'Units From',
-		ddHeadUnitsTo: 'Units To'
+		ddHeadUnitsTo: 'Units To',
+		valToConv: '',
+		result: ''
 	}
  
-	pillClick = (event) => { 
+	pillClick = (event) => {
+	console.log(event) 
 		this.setState({ddHeadUnitsFrom: 'Units From'})	
 		this.setState({ddHeadUnitsTo: 'Units To'})
 	 	let unitSelect = event.target.id
@@ -135,7 +138,7 @@ class UnitCon extends Component {
  	}
 
  	createUnitsArray = (unitsObject) => {
- 		console.log(unitsObject)
+ 		// console.log(unitsObject)
 
  		let unitsArray=Object.keys(unitsObject)
  		console.log(unitsArray)
@@ -145,37 +148,81 @@ class UnitCon extends Component {
  	}
 
  	ddClick = (event) => {	 	
-		// let ddHeading=event.target.parentElement.parentElement.children[0]
-		// ddHeading.textContent=event.target.textContent
-		console.log("ddClick")
+		
 		let ddFromTo=event.target.parentElement.parentElement.id
 
+		if(ddFromTo=='') {
+			alert ("Please select a Units Type")
+		}
+
 		if(ddFromTo=="unitsFrom"){
-			this.setState({ddHeadUnitsFrom: event.target.textContent})	
-			console.log("ddclick unitsFrom set state")	
+			this.setState({ddHeadUnitsFrom: event.target.textContent})
+			let inputField = event.target.parentElement.parentElement.children[2]
+			inputField.disabled=false		
 		}
 		
 		if(ddFromTo=="unitsTo"){
-			this.setState({ddHeadUnitsTo: event.target.textContent})
-			console.log("ddclick unitsTo set state")		
+			this.setState({ddHeadUnitsTo: event.target.textContent})		
+		}	
+
+	}
+
+	inputValueFunc = (event) => {
+		console.log(event.target.value)
+		let decimal =/^[0-9]+$/;
+		if (event.target.value.match(decimal)){
+			this.setState({valToConv: event.target.value})
+
+		} else {
+			alert ("Invalid Character Input");
+			throw "Invalid character input";
 		}
-
-
 		
 	}
 
-	clearDDHeading = () => {
+	formSubmit = (event) => {
+
+		console.log(event.target.parentElement)
 		
+		let unitsFromSelect = this.state.ddHeadUnitsFrom
+		let unitsToSelect = this.state.ddHeadUnitsTo
+		let unitsFromObject = this.state.unitsFrom
+		
+		let inputValue = this.state.valToConv
+
+		let unitsFromCF	= unitsFromObject[unitsFromSelect]
+		let unitsToCF	= unitsFromObject[unitsToSelect]
+
+		console.log(unitsFromCF, " " , unitsToCF)
+		console.log(this.state.valToConv)
+		let conVal = (inputValue*(unitsToCF/unitsFromCF)).toFixed(7)
+		console.log(conVal)
+		this.setState({result: conVal})
+	}
+
+
+	resultValueFunc = (props) => {
+		
+	}
+
+	componentDidMount (unitCon) {
+		console.log("mounted")
+		this.setState({ddHeadUnitsFrom: 'Units From'})	
+		this.setState({ddHeadUnitsTo: 'Units To'})
+	 	
+	 	this.createUnitsObject("mass")
+
 	}
 
     render() {
     	// get units from state and create variable
     	const {units} = this.state;
-    	
-    	
+    	const {result} = this.state
+    	console.log(result) 
+
         return (
             <Container>
-				<Card style={{ width: '18rem' }}>
+				<Card >
 					<Card className="text-center">
 						 <Card.Header>
 							<h2>Units Converter</h2>
@@ -192,6 +239,8 @@ class UnitCon extends Component {
 						<dt> Select Units To Convert: </dt>
 						<InputGroup className="mb-3" 
 						id="unitsFrom"
+						
+
 						>
 							<UnitsDrop
 							// get units from state and pass as props
@@ -205,9 +254,11 @@ class UnitCon extends Component {
 							<Form.Control
   								aria-label="Example text with button addon"
   								aria-describedby="basic-addon1"
-  								placeholder="Result"
+  								placeholder="Value from"
   								id="userOutput" 
   								disabled 
+  								onChange={this.inputValueFunc}
+  								
 							/>
     					</InputGroup>
 						<InputGroup className="mb-3" id="unitsTo">
@@ -225,7 +276,8 @@ class UnitCon extends Component {
       								placeholder="Result"
       								id="userOutput" 
       								disabled 
-    							/>
+      								value={result}
+      								/>
     					</InputGroup>
 
 						<Button variant="outline-success"id="button-addon2" onClick={this.formSubmit}>Convert</Button>{' '}			
