@@ -16,15 +16,7 @@ class App extends Component {
 		widgets: widgets,
 		searchfield: []
 	}
-// 
-// 	componentDidMount() {
-// 	  const script = document.createElement("script");
-// 	  script.src = "statis/libs/ucscript.js";
-// 	  script.async = true;
-// 	  script.onload = () => this.scriptLoaded();
-// 
-// 	  document.body.appendChild(script);
-// 	}
+
 
 	onChange = (event) => {	
 		let x
@@ -52,7 +44,7 @@ class App extends Component {
 				<Scroll>				
 					<CardList widgets={filteredWidgets}/>			
 				</Scroll>
-				<UnitCon/>
+				{/* <UnitCon/> */}
 			</div>
 		)				
 	}	

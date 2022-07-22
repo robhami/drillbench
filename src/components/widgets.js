@@ -1,10 +1,14 @@
+import UnitCon from '../components/UnitCon.js';
+
+
 export const widgets = [
 
 	{
 		id: 0,
 		name: 'Units Converter',
 		image: 'https://cdn.iconscout.com/icon/free/png-128/emi-calculator-1795294-1522560.png',
-		value: 'Units Converter'
+		value: 'Units Converter',
+		app: <UnitCon/>
 		
 	},
 
