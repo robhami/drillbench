@@ -5,9 +5,8 @@ import './App.css';
 import Scroll from '../components/Scroll.js';
 import SearchDrop from '../components/SearchDrop.js'
 import Navbar from '../components/Navbar.jsx'
-import UnitCon from '../components/UnitCon.js';
-
-import Draggable from 'react-draggable';
+import UnitCon from '../components/UnitCon/UnitCon.js';
+import BHADrag from '../components/BHADrag/BHADrag.js';
 
 
 class App extends Component {

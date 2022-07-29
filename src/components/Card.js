@@ -1,9 +1,10 @@
 import React from 'react';
 import Draggable from 'react-draggable';
+import Button from 'react-bootstrap/Button';
 // import {DraggableCore} from 'react-draggable'; 
 // import Draggable, {DraggableCore} from 'react-draggable'
 // import DragCard from '../components/DragCard.js'
-import UnitCon from '../components/UnitCon.js';
+// import UnitCon from '../components/UnitCon.js';
 
 //passed from CardList
 const Card= ({ name, id, image, app } ) => {
@@ -17,8 +18,8 @@ const Card= ({ name, id, image, app } ) => {
 
 						<div>
 							<h2>{name}</h2>
-							
-							<div>{app} </div>
+							<Button variant="danger">Lock</Button>{' '}
+							<div> {app} </div>
 							{/* <p>Card</p> */}
 						</div>		
 					</div>	

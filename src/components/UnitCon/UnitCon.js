@@ -7,9 +7,9 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import NavPill from '../components/NavPill.js';
-import {unitsType} from '../components/unitsType.js';
-import UnitsDrop from '../components/UnitsDrop.js'
+import NavPill from '../UnitCon/NavPill.js';
+import {unitsType} from '../UnitCon/unitsType.js';
+import UnitsDrop from '../UnitCon/UnitsDrop.js'
 
 class UnitCon extends Component {
 

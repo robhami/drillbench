@@ -1,4 +1,5 @@
-import UnitCon from '../components/UnitCon.js';
+import UnitCon from '../components/UnitCon/UnitCon.js';
+import BHADrag from '../components/BHADrag/BHADrag.js';
 
 
 export const widgets = [
@@ -16,7 +17,9 @@ export const widgets = [
 		id: 1,
 		name: 'BHA entry',
 		image: 'https://cdn.iconscout.com/icon/premium/png-128-thumb/oil-well-6-1049520.png',
-		value: 'BHA entry'
+		value: 'BHA entry',
+		app: <BHADrag/>
+
 	},
 
 	{
