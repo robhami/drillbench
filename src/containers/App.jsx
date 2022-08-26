@@ -7,7 +7,7 @@ import SearchDrop from '../components/SearchDrop.js'
 import Navbar from '../components/Navbar.jsx'
 import UnitCon from '../components/UnitCon/UnitCon.js';
 import BHADrag from '../components/BHADrag/BHADrag.js';
-
+import LockButton from '../components/LockButton.js'
 
 class App extends Component {
 
@@ -18,6 +18,7 @@ class App extends Component {
 
 
 	onChange = (event) => {	
+		console.log(event)
 		let x
 		let searchArray=[]
 		for (x=0;x<event.length;x++){
