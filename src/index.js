@@ -5,6 +5,7 @@ import App from './containers/App.jsx';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 // import './components/ucscript.js'
+import gridstyles from './components/BHADrag/gridstyles.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

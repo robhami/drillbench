@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
-
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const ToolRow = () => {
@@ -10,7 +10,9 @@ const ToolRow = () => {
 	return (
 	   
 	        <tr className="bhaRow">
-	          <td></td>
+	          <td>
+	          	<Dropdown></Dropdown>
+	          </td>
 	          <td></td>
 	          <td></td>
 	        </tr>

@@ -22,7 +22,11 @@
 
 
 #AddButt {
-  max-width: 50px;
+  max-width: 25px;
+}
+
+#MinusButt {
+  max-width: 25px;
 }
 
 #numRows {

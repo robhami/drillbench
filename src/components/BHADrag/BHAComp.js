@@ -87,6 +87,7 @@ class BHAComp extends Component {
 						<Draggable
 							grid={[50, 50]} 
               onDrag={this.handleDrag}
+              onDrop={console.log("dropped")}
               {...dragHandlers}
 
 						>

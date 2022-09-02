@@ -3,10 +3,16 @@ import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import ToolRow from './ToolRow.js'
 import AddButton from '../AddButton.js';
+import MinusButton from '../MinusButton.js';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+
+
 const BHAGrid = () => {
 //can create row component to feed the table and map the rows based a dropdown
+
+	console.log(InputGroup.ClassList)
+	// console.log(rowCount)
 
 	const [rowCount, setRows] = useState(8)
 	
@@ -15,9 +21,17 @@ const BHAGrid = () => {
 			setRows(rowCount+1)
 				console.log("clicked")
 				console.log(rowCount)
-				}
+	}
 
-	console.log(rowCount)
+	
+
+	const minusRow = (props) => {
+			// console.log(rowCount)
+			setRows(rowCount-1)
+				console.log("clicked")
+				console.log(rowCount)
+	}
+
 
 	const renderRows = () => {
 		let ToolRows = [];
@@ -34,6 +48,7 @@ const BHAGrid = () => {
 		<InputGroup size="sm" className="mb-3">
         <InputGroup.Text id="inputGroup-sizing-sm">Rows</InputGroup.Text>
        	<AddButton onClick={addRow}/>
+       	<MinusButton onClick={minusRow}/>
       </InputGroup>
 
 {/*  */}
